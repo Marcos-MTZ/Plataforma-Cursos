@@ -1,0 +1,9 @@
+com\plataformacursos\api\repository\CursoRepository.class
+com\plataformacursos\api\exception\GlobalExceptionHandler.class
+com\plataformacursos\api\exception\CursoException.class
+com\plataformacursos\api\controller\CursoController.class
+com\plataformacursos\api\model\Curso.class
+com\plataformacursos\api\model\Instructor.class
+com\plataformacursos\api\exception\GlobalExceptionHandler$ApiError.class
+com\plataformacursos\api\ApiApplication.class
+com\plataformacursos\api\service\CursoService.class

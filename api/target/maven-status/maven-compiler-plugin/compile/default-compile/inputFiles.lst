@@ -1,0 +1,8 @@
+C:\Users\uriel\IdeaProjects\Plataforma-Cursos\api\src\main\java\com\plataformacursos\api\ApiApplication.java
+C:\Users\uriel\IdeaProjects\Plataforma-Cursos\api\src\main\java\com\plataformacursos\api\controller\CursoController.java
+C:\Users\uriel\IdeaProjects\Plataforma-Cursos\api\src\main\java\com\plataformacursos\api\exception\CursoException.java
+C:\Users\uriel\IdeaProjects\Plataforma-Cursos\api\src\main\java\com\plataformacursos\api\exception\GlobalExceptionHandler.java
+C:\Users\uriel\IdeaProjects\Plataforma-Cursos\api\src\main\java\com\plataformacursos\api\model\Curso.java
+C:\Users\uriel\IdeaProjects\Plataforma-Cursos\api\src\main\java\com\plataformacursos\api\model\Instructor.java
+C:\Users\uriel\IdeaProjects\Plataforma-Cursos\api\src\main\java\com\plataformacursos\api\repository\CursoRepository.java
+C:\Users\uriel\IdeaProjects\Plataforma-Cursos\api\src\main\java\com\plataformacursos\api\service\CursoService.java

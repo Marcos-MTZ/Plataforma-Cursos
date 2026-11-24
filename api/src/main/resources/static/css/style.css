@@ -1,0 +1,325 @@
+:root {
+    --color-fondo: #f4f6f8;
+    --color-superficie: #ffffff;
+    --color-texto: #1f2933;
+    --color-secundario: #616e7c;
+    --color-borde: #d9e0e7;
+    --color-primario: #2563eb;
+    --color-primario-oscuro: #1d4ed8;
+    --color-peligro: #c62828;
+    --color-exito: #1b7a3d;
+    --radio: 8px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.5;
+}
+
+/* ---------- Estructura ---------- */
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--color-superficie);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+main {
+    display: grid;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+.panel {
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 1rem;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    font: inherit;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #eef2f6;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-primario {
+    background: var(--color-primario);
+    border-color: var(--color-primario);
+    color: #fff;
+}
+
+.btn-primario:hover {
+    background: var(--color-primario-oscuro);
+}
+
+.btn-pequeno {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.85rem;
+}
+
+.btn-peligro {
+    color: var(--color-peligro);
+    border-color: var(--color-peligro);
+}
+
+.btn-peligro:hover {
+    background: #fdecea;
+}
+
+/* ---------- Formularios ---------- */
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    background: #fff;
+    color: inherit;
+    font: inherit;
+}
+
+input:focus,
+select:focus,
+.btn:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 1px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.filtros .campo {
+    min-width: 200px;
+}
+
+.acciones-filtro {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ---------- Mensajes ---------- */
+.mensaje {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radio);
+    border: 1px solid;
+}
+
+.mensaje.exito {
+    background: #e8f5ec;
+    border-color: #b7dfc3;
+    color: var(--color-exito);
+}
+
+.mensaje.error {
+    background: #fdecea;
+    border-color: #f5c2c0;
+    color: #8a1c1c;
+}
+
+/* ---------- Tabla ---------- */
+.contador {
+    margin: 0 0 0.75rem;
+    color: var(--color-secundario);
+    font-size: 0.9rem;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 980px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+th {
+    background: #f0f3f6;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+td small {
+    color: var(--color-secundario);
+}
+
+.vacio {
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-secundario);
+}
+
+.acciones {
+    display: flex;
+    gap: 0.4rem;
+    white-space: nowrap;
+}
+
+.etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.etiqueta {
+    padding: 0 0.5rem;
+    border-radius: 999px;
+    background: #e8eefc;
+    color: #274690;
+    font-size: 0.75rem;
+}
+
+.badge {
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.badge-activo {
+    background: #e8f5ec;
+    color: var(--color-exito);
+}
+
+.badge-inactivo {
+    background: #eceff1;
+    color: var(--color-secundario);
+}
+
+/* ---------- Ventana del formulario ---------- */
+dialog {
+    width: min(660px, 94vw);
+    padding: 0;
+    border: none;
+    border-radius: var(--radio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.dialogo-contenido {
+    padding: 1.25rem;
+}
+
+.dialogo-contenido h2 {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+}
+
+.rejilla {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 1rem;
+}
+
+.campo-ancho {
+    grid-column: 1 / -1;
+}
+
+.campo-check {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.campo-check input {
+    width: auto;
+}
+
+.dialogo-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+.errores {
+    margin-bottom: 1rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #f5c2c0;
+    border-radius: 6px;
+    background: #fdecea;
+    color: #8a1c1c;
+}
+
+.errores ul {
+    margin: 0.4rem 0 0;
+    padding-left: 1.2rem;
+}
+
+@media (max-width: 600px) {
+    .rejilla {
+        grid-template-columns: 1fr;
+    }
+
+    .encabezado {
+        padding: 0.75rem 1rem;
+    }
+}
