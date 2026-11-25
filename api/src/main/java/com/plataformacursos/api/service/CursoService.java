@@ -10,7 +10,6 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Lógica del CRUD de cursos: apoya en los métodos de Spring Data y agrega solo las reglas necesarias. */
 @Service
 @RequiredArgsConstructor
 public class CursoService {

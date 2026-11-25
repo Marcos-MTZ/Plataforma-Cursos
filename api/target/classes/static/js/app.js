@@ -73,7 +73,7 @@ async function cargarCursos() {
     }
 }
 
-/** Llena el filtro (y las sugerencias del formulario) con las categorías que existen en los datos. */
+/** Llena el filtro (y sugerencias) con las categorías que existen en los datos. */
 async function cargarCategorias() {
     try {
         const cursos = await cursosApi.listar();
@@ -88,7 +88,7 @@ async function cargarCategorias() {
             listaCategorias.append(new Option(nombre));
         });
 
-        // Si la categoría seleccionada ya no existe (por ejemplo, se eliminó su último curso), se limpia
+        // Si la categoría seleccionada ya no existe, se limpia
         filtroCategoria.value = categorias.includes(seleccionada) ? seleccionada : "";
     } catch (error) {
         mostrarMensaje(error.message, "error");

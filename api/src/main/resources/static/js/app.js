@@ -7,6 +7,7 @@ const tabla = $("tabla-cursos");
 const contador = $("contador");
 const mensaje = $("mensaje");
 const formFiltros = $("form-filtros");
+const filtroTitulo = $("filtro-titulo");
 const filtroCategoria = $("filtro-categoria");
 const filtroNivel = $("filtro-nivel");
 const listaCategorias = $("lista-categorias");
@@ -63,11 +64,29 @@ function mostrarMensaje(texto, tipo = "exito") {
 async function cargarCursos() {
     const categoria = filtroCategoria.value;
     const nivel = filtroNivel.value;
+    const tituloBuscado = filtroTitulo.value
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLocaleLowerCase("es-MX");
+
     try {
         const cursos = categoria || nivel
             ? await cursosApi.filtrar(categoria, nivel)
             : await cursosApi.listar();
-        renderizarTabla(cursos);
+
+        const cursosFiltrados = tituloBuscado
+            ? cursos.filter((curso) => {
+                const titulo = (curso.titulo ?? "")
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .toLocaleLowerCase("es-MX");
+
+                return titulo.includes(tituloBuscado);
+            })
+            : cursos;
+
+        renderizarTabla(cursosFiltrados);
     } catch (error) {
         mostrarMensaje(error.message, "error");
     }
@@ -301,6 +320,7 @@ async function eliminarCurso(curso) {
 $("btn-nuevo").addEventListener("click", () => abrirFormulario());
 $("btn-cancelar").addEventListener("click", () => dialogo.close());
 $("btn-limpiar").addEventListener("click", () => {
+    filtroTitulo.value = "";
     filtroCategoria.value = "";
     filtroNivel.value = "";
     cargarCursos();
