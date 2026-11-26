@@ -60,20 +60,32 @@ function mostrarMensaje(texto, tipo = "exito") {
     temporizadorMensaje = setTimeout(() => (mensaje.hidden = true), 5000);
 }
 
+function esIdMongoDB(texto) {
+    return /^[a-f\d]{24}$/i.test(texto);
+}
+
 /* ---------- Carga de datos ---------- */
 async function cargarCursos() {
     const categoria = filtroCategoria.value;
     const nivel = filtroNivel.value;
-    const tituloBuscado = filtroTitulo.value
-        .trim()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLocaleLowerCase("es-MX");
+    const busqueda = filtroTitulo.value.trim();
 
     try {
+        // Si tiene 24 caracteres hexadecimales, se consulta directamente por ID.
+        if (esIdMongoDB(busqueda)) {
+            const curso = await cursosApi.buscarPorId(busqueda);
+            renderizarTabla([curso]);
+            return;
+        }
+
         const cursos = categoria || nivel
             ? await cursosApi.filtrar(categoria, nivel)
             : await cursosApi.listar();
+
+        const tituloBuscado = busqueda
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLocaleLowerCase("es-MX");
 
         const cursosFiltrados = tituloBuscado
             ? cursos.filter((curso) => {

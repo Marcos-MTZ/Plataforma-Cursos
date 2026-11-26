@@ -32,6 +32,9 @@ export const cursosApi = {
     /** GET /api/cursos */
     listar: () => solicitar(BASE_URL),
 
+    /** GET /api/cursos/{id} */
+    buscarPorId: (id) => solicitar(`${BASE_URL}/${id}`),
+
     /** GET /api/cursos/filtrar?categoria=&nivel= (solo envía los filtros con valor) */
     filtrar(categoria, nivel) {
         const parametros = new URLSearchParams();
